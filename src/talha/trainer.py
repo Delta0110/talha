@@ -65,7 +65,7 @@ class Trainer:
         correct = 0
         total = 0
         
-        for batch_idx, (data, target) in enumerate(tqdm(train_loader, desc="Eğitim")):
+        for _, (data, target) in enumerate(tqdm(train_loader, desc="Eğitim")):
             data, target = data.to(self.device), target.to(self.device)
             
             # Gradyanları sıfırla / Zero gradients

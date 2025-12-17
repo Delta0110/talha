@@ -73,9 +73,10 @@ def main():
     
     # 8. Tahmin örneği / Prediction example
     print("\n6. Örnek tahmin... / Sample prediction...")
-    sample_data = next(iter(val_loader))[0][:5]  # İlk 5 örnek
+    NUM_SAMPLE_PREDICTIONS = 5
+    sample_data = next(iter(val_loader))[0][:NUM_SAMPLE_PREDICTIONS]
     predictions = model.predict(sample_data)
-    print(f"   İlk 5 tahmin / First 5 predictions: {predictions.tolist()}")
+    print(f"   İlk {NUM_SAMPLE_PREDICTIONS} tahmin / First {NUM_SAMPLE_PREDICTIONS} predictions: {predictions.tolist()}")
     
     print("\n" + "=" * 60)
     print("✓ Örnek tamamlandı! / Example completed!")

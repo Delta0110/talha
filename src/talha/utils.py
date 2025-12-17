@@ -183,9 +183,12 @@ def print_model_summary(model, input_size=(1, 784)):
     print(f"Eğitilebilir Parametreler / Trainable Parameters: {params['trainable']:,}")
     print(f"Eğitilemez Parametreler / Non-trainable Parameters: {params['non_trainable']:,}")
     
-    # Parametre boyutu
-    param_size = sum(p.numel() * p.element_size() for p in model.parameters())
-    buffer_size = sum(b.numel() * b.element_size() for b in model.buffers())
-    total_size_mb = (param_size + buffer_size) / (1024 ** 2)
+    # Parametre ve buffer boyutu - tek iterasyon
+    # Parameter and buffer size - single iteration
+    total_size_bytes = sum(
+        t.numel() * t.element_size() 
+        for t in list(model.parameters()) + list(model.buffers())
+    )
+    total_size_mb = total_size_bytes / (1024 ** 2)
     print(f"\nModel Boyutu / Model Size: {total_size_mb:.2f} MB")
     print("=" * 80)

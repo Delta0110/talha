@@ -51,7 +51,7 @@ def parse_args():
     parser.add_argument(
         "--no-download",
         action="store_true",
-        help="Veri setini indirme"
+        help="Veri setini otomatik indirmeyi devre dışı bırak / Disable automatic dataset download"
     )
     
     return parser.parse_args()
